@@ -1,0 +1,150 @@
+.dashboard-layout {
+  display: flex;
+  background: #f1f5f9;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 240px;
+  background: #111827;
+  color: #fff;
+  padding: 25px 18px;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-header {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 8px;
+}
+.sidebar-user {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 18px;
+}
+.sidebar-nav, .sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.sidebar-footer {
+  margin-top: auto;
+}
+.sidebar-btn {
+  border: none;
+  background: transparent;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #cbd5e1;
+  font-size: 15px;
+}
+.sidebar-btn:hover {
+  background: #1e293b;
+  color: white;
+}
+.logout-btn {
+  background: rgba(255, 0, 0, 0.12);
+}
+.logout-btn:hover {
+  background: rgba(255, 0, 0, 0.35);
+}
+
+/* Main Dashboard */
+.dashboard-content {
+  flex: 1;
+  padding: 30px 40px;
+  overflow-y: auto;
+}
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.welcome-title {
+  font-size: 26px;
+  font-weight: 700;
+}
+.btn-primary {
+  background: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.btn-primary:hover {
+  background: #4338ca;
+}
+
+/* Todo Grid */
+.todo-grid {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+}
+
+/* Todo Card */
+.todo-card {
+  background: white;
+  padding: 14px;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+}
+.todo-card.completed {
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+.todo-top {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.todo-title {
+  margin: 0;
+  font-size: 16px;
+}
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.priority {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+.priority.low {
+  background: #d1fae5;
+  color: #065f46;
+}
+.priority.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+.priority.high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.todo-actions button {
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-left: 6px;
+  background: #e5e7eb;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+}
+.todo-actions button:hover {
+  background: #d1d5db;
+}

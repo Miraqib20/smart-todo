@@ -1,0 +1,98 @@
+.edit-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #eef2ff;
+  padding: 20px;
+}
+
+.edit-card {
+  background: white;
+  width: 100%;
+  max-width: 480px;
+  padding: 26px 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.edit-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #4338ca;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+  color: #374151;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 4px rgba(99, 102, 241, 0.4);
+}
+
+textarea {
+  height: 90px;
+  resize: none;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.back-btn {
+  background: #e5e7eb;
+  color: #374151;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  background: #cbd5e1;
+}
+
+.save-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #4338ca;
+}
+
+/* 📱 Responsive */
+@media (max-width: 480px) {
+  .edit-card {
+    padding: 20px;
+  }
+}
