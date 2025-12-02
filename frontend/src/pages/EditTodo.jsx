@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../api";
-import { useNavigate } from "react-router-dom";
-import "../styles/editTodo.css"; // Same styling as Edit
+import { useNavigate, useParams } from "react-router-dom";
+import "../styles/editTodo.css"; // <-- New CSS file
 
-export default function AddTodo() {
+export default function EditTodo() {
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const [todo, setTodo] = useState({
@@ -14,27 +15,55 @@ export default function AddTodo() {
     completed: false,
   });
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTodo = async () => {
+      try {
+        const res = await api.get(`/todos/${id}`);
+        const data = res.data;
+        data.due_date = data.due_date?.split("T")[0];
+        setTodo(data);
+      } catch (err) {
+        console.log("Todo not found or unauthorized:", err);
+        alert("Task not found!");
+        navigate("/todos");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTodo();
+  }, [id, navigate]);
+
   const handleChange = (e) => {
     setTodo({ ...todo, [e.target.name]: e.target.value });
   };
 
   const submit = async (e) => {
     e.preventDefault();
-    await api.post("/todos/", todo);
-    navigate("/todos");
+    try {
+      await api.put(`/todos/${id}`, todo);
+      alert("Task updated successfully!");
+      navigate("/todos");
+    } catch (err) {
+      alert("Failed to update task!");
+      console.log(err.response?.data || err);
+    }
   };
+
+  if (loading) return <p className="loading">Loading...</p>;
 
   return (
     <div className="edit-container">
       <div className="edit-card">
-        <h2 className="edit-title">➕ Add New Todo</h2>
+        <h2 className="edit-title">✏️ Edit Task</h2>
 
         <form onSubmit={submit}>
-          
-          <label>Todo Title</label>
+
+          <label>Task Title</label>
           <input
             name="title"
-            placeholder="Enter todo name"
             required
             value={todo.title}
             onChange={handleChange}
@@ -43,10 +72,9 @@ export default function AddTodo() {
           <label>Description</label>
           <textarea
             name="description"
-            placeholder="Task details..."
-            value={todo.description}
+            value={todo.description || ""}
             onChange={handleChange}
-          />
+          ></textarea>
 
           <label>Due Date</label>
           <input
@@ -74,11 +102,11 @@ export default function AddTodo() {
               className="back-btn"
               onClick={() => navigate("/todos")}
             >
-              ◀ Cancel
+              ◀ Back
             </button>
 
             <button type="submit" className="save-btn">
-              ➕ Add Todo
+              💾 Update Task
             </button>
           </div>
 
