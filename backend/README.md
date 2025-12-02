@@ -29,14 +29,6 @@ It provides **user authentication (Login / Signup)** and **Todo management APIs*
 ## 📦 Install Dependencies
 
 Create and activate virtual environment:
-
-```sh
-python -m venv venv
-venv\Scripts\activate  # Windows
-
-📦 Install Dependencies
-
-Create and activate virtual environment:
 python -m venv venv
 venv\Scripts\activate  # Windows
 Install required packages:
@@ -85,7 +77,7 @@ CREATE TABLE Todos (
 
 Start FastAPI using Uvicorn:
 
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 
 
 Server will run on:
